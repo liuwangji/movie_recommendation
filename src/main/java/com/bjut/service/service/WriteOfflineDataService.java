@@ -25,6 +25,7 @@ public class WriteOfflineDataService {
     public static String preferenceTableName;
     public static String predictTableName;
     public static String tagTableName;
+    public static String completeTableName;
 
     @Value("${movie.tableName}")
     public void setMovieTableName(String movieTableName) {
@@ -46,6 +47,11 @@ public class WriteOfflineDataService {
         WriteOfflineDataService.tagTableName = tagTableName;
     }
 
+    @Value("${complete.tableName}")
+    public  void setCompleteTableName(String completeTableName) {
+        WriteOfflineDataService.completeTableName = completeTableName;
+    }
+
     @Value("${movie.fileName}")
     public String movieFile;
     @Value("${rating.fileName}")
@@ -65,6 +71,8 @@ public class WriteOfflineDataService {
         initPrefenceData();
         initPredictData();
         initTagData();
+        recreategCompletePredictTable();
+        recreategCompletePreferenceTable();
         System.out.println("init stop");
     }
 
@@ -88,7 +96,19 @@ public class WriteOfflineDataService {
 
     public void recreateTagTable() {
         String createSql = "create table " + tagTableName
-            + " (userId int(5), movieId int(5), tag varchar(250), timeStamp varchar(20))";
+                + " (userId int(5), movieId int(5), tag varchar(250), timeStamp varchar(20))";
+        mysqlDao.recreateTable(tagTableName, createSql);
+    }
+
+    public void recreategCompletePreferenceTable() {
+        String createSql = "create table " + completeTableName
+                + " select * from "+preferenceTableName+" left join "+ movieTableName+" on movies.movieId = ratings.movieId";
+        mysqlDao.recreateTable(tagTableName, createSql);
+    }
+
+    public void recreategCompletePredictTable() {
+        String createSql = "create table " + completeTableName
+                + " select * from "+predictTableName+" left join "+ movieTableName+" on movies.movieId = predict.movieId";
         mysqlDao.recreateTable(tagTableName, createSql);
     }
 

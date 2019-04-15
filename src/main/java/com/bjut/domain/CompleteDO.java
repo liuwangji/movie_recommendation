@@ -1,14 +1,12 @@
 package com.bjut.domain;
 
-/**
- * 连接后的数据模型
- */
-public class OverallDO extends AbstractDO{
+public class CompleteDO {
     public int userId;
     public int movieId;
     public String movieTitle;
     public String genres;
     public String tag;
+    public String imgUrl;
 
     public int getMovieId() {
         return movieId;
@@ -48,5 +46,13 @@ public class OverallDO extends AbstractDO{
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

@@ -28,9 +28,15 @@ public class MovieRecommdationServiceImpl implements MovieRecommdationService {
     public ModelAndView enterIndex(Model model) {
         return new ModelAndView("index");
     }
+
     @RequestMapping(value = "/login")
     public ModelAndView login(Model model) {
         return new ModelAndView("login");
+    }
+
+    @RequestMapping(value = "/search")
+    public ModelAndView search(Model model) {
+        return new ModelAndView("search");
     }
 
     @RequestMapping(value = "/show")

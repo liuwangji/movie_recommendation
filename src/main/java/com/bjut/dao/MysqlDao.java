@@ -269,22 +269,21 @@ public class MysqlDao {
     }
 
     /**
-     * 获取大众评分前十的电影
+     * 获取观看次数前十的电影
      *
      * @param tableName
      * @return
      */
     public List<RatingDO> getTopMovieLookingCountList(String tableName, int page, int pageCount) {
         List<RatingDO> resultList = new ArrayList<RatingDO>();
-        String sql = "select movieId,avg(rating) as avgRating from " + tableName + " group by movieId having count(1) >10  order by avgRating desc" + " limit " + page * pageCount;
+        String sql = "select movieId, count(1) as count from " + tableName + " group by movieId  order by count desc" + " limit " + page * pageCount;
         PreparedStatement pstmt;
         try {
             pstmt = mysqlConnection.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                resultList.add(TransferUtil.transfer2RatingDO(rs.getInt("userId"), rs.getInt("movieId"),
-                        rs.getDouble(
-                                "avgRating")));
+                resultList.add(TransferUtil.transfer2RatingDO(1, rs.getInt("movieId"),
+                        null));
             }
         } catch (SQLException e) {
             e.printStackTrace();
