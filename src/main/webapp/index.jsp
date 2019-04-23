@@ -16,22 +16,23 @@
         <div style="height: 100px; color: cornsilk"><h1>电影推荐系统</h1></div>
     </div>
 </div>
-<div style="top: 50%;
-            left: 50%;
-            width: 80%;
-            height: 40%;
 
-            transform: translate(10%, 30%);">
-    <center>
-        <form id="init" action="/init" method="get">
-            <input type="submit" class="btn" value="初始化" size=100>
-        </form>
-
-        <form id="login" action="/login" method="get">
-            <input type="submit" class="btn" value="登陆" size=100>
-        </form>
-    </center>
+<div class="floatCSS">
+    <div class="display searchCenter display">
+        <div class="width40">
+            <form id="init" action="/init" method="get">
+                <input type="submit" class="btn" value="初始化" size=100>
+            </form>
+        </div>
+        <div class="width40">
+            <form id="login" action="/login" method="get">
+                <input type="submit" class="btn" value="登陆" size=100>
+            </form>
+        </div>
+    </div>
 </div>
+
+
 <!-- 新 Bootstrap 核心 CSS 文件 -->
 <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 

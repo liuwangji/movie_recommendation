@@ -7,10 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<%--<link rel="stylesheet" href="assets/css/main.css"/>--%>
+<link rel="stylesheet" href="assets/css/movie.css"/>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%--页面头部信息--%>
 <div class="header"
      style="background-image: url(figure/head.jpg);height: 75px">
@@ -18,6 +21,7 @@
         <div style="height: 100px; color: cornsilk"><h1>电影推荐系统</h1></div>
     </div>
 </div>
+<%--登陆信息--%>
 <div>
     <div style="clear: both;"></div>
     <img src="figure/user.jpg" style="position: absolute;right: 10px;
@@ -33,179 +37,196 @@
     line-height: 110px;font-size: 20px;color: cornsilk">
         ${nickName}
     </p>
-    <div style="clear: both;"></div>
+    <div class="clearFloat"></div>
 </div>
 
-<%--搜索栏--%>
-<div class="nav-search">
-    <center>
+<div class="floatCSS">
+    <%--搜索栏--%>
+    <div class="search">
         <form action="/search" method="get">
-            <fieldset>
-
-                <div class="inp">搜索：<input id="inp-query" name="search_text" size="22" maxlength="60"
-                                           placeholder="搜索电影、电视剧、综艺、影人" autocomplete="off"></div>
-                <div class="inp-btn"><input type="submit" value="搜索"></div>
-                <input type="hidden" name="cat" value="1002">
-            </fieldset>
-        </form>
-    </center>
-</div>
-<%--分类栏--%>
-<div>
-    <h1>选电影</h1>
-    <div class="tags">
-        <div class="tag-list">
-            <label class="activate">
-                热门
-                <input type="radio" name="tag" value="热门" checked="checked">
-            </label>
-            <label>
-                最新
-                <input type="radio" name="tag" value="最新">
-            </label>
-            <label>
-                经典
-                <input type="radio" name="tag" value="经典">
-            </label>
-            <label>
-                动作
-                <input type="radio" name="tag" value="动作">
-            </label>
-            <label>
-                喜剧
-                <input type="radio" name="tag" value="喜剧">
-            </label>
-            <label>
-                爱情
-                <input type="radio" name="tag" value="爱情">
-            </label>
-            <label>
-                科幻
-                <input type="radio" name="tag" value="科幻">
-            </label>
-            <label>
-                悬疑
-                <input type="radio" name="tag" value="悬疑">
-            </label>
-            <label>
-                恐怖
-                <input type="radio" name="tag" value="恐怖">
-            </label>
-            <label>
-                文艺
-                <input type="radio" name="tag" value="文艺">
-            </label>
-        </div>
-        <div class="custom-frm" data-type="tag">
-            <input type="hidden">
-            <button>确定</button>
-        </div>
-        <div class="tool">
-            <div class="sort">
-                <label>
-                    <input type="radio" name="sort" value="recommend" checked="checked">按热度排序
-                </label>
-                <label>
-                    <input type="radio" name="sort" value="rank">按评价排序
-                </label>
+            <div id="defaultParam">
+                <input type="hidden" name="userId" , value=${userId}>
+                <input type="hidden" name="nickName" , value=${nickName}>
             </div>
-            <input type="hidden" name="page_limit" value="20">
-            <input type="hidden" name="page_start" value="0">
-        </div>
+            <div class=" searchCenter">
+                <input class="width400px display height30 " name="search_text" size="22" maxlength="60"
+                       placeholder="搜索电影名称、电影分类"
+                       autocomplete="off">
+                <input type="submit" class="width100px backGround searchButton s_btn display" value="搜索">
+            </div>
+        </form>
+        <div class="clearFloat"></div>
 
-    </div>
-</div>
-<%--电影展示--%>
-<div style="left: 10px; right: 10px">
-    <div id="show">
+        <%--分类栏--%>
+        <form id="form" action="/reSearch" method='get'>
+            <div id="defaultUserParam">
+                <input type="hidden" name="userId" , value=${userId}>
+                <input type="hidden" name="nickName" , value=${nickName}>
+            </div>
+            <div class="searchContainer">
+                <div class="tags inLine">
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="All">
+                        全部类型
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag " name="tag" value="Drama">
+                        戏剧
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Horror">
+                        恐怖
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Adventure">
+                        冒险
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Animation">
+                        动物
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="children">
+                        儿童
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Comedy">
+                        喜剧
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Fantasy">
+                        奇幻
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Romance">
+                        浪漫
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Thriller">
+                        惊悚
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Action">
+                        动作
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="War">
+                        战争
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Crime">
+                        犯罪
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Mystery">
+                        神秘
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Musical">
+                        音乐
+                    </label>
+                    <label class="float80px">
+                        <input type="radio" class="tag" name="tag" value="Sci-Fi">
+                        科幻
+                    </label>
+                </div>
+                <div class="clearFloat"></div>
+
+                <div class="marginTop20">
+                    <input type="radio" class="tag display marginRight20" name="type" value="count">
+                    <label class="marginRight20">
+                        热度排序
+                    </label>
+                    <input type="radio" class="tag display marginRight20" name="type" value="rate">
+                    <label class="marginRight20">
+                        评分排序
+                    </label>
+                    <input type="submit" class="backGround searchButton s_btn display" value="搜索">
+                </div>
+            </div>
+            <script type="text/javascript">
+                $("input[name='tag'][value='${tag}']").attr("checked", true);
+                $("input[name='type'][value='${type}']").attr("checked", true);
+            </script>
+        </form>
+        <div class="clear"></div>
+        <%--电影展示--%>
         <div>
-            <h3>按热度排序</h3>
-            <div class="list">
-                <div id="test" style="width: 60%">
-                    <c:forEach items="${peopleLikeByLookCountResults}" var="item">
-                        <div style="width: 11%">
-                            <a class="item" target="_blank"
-                               href="https://movie.douban.com/subject/1292052/?tag=豆瓣高分${item.movieTitle};from=gaia_video">
-
-                                <div class="cover-wp" data-isnew="false" data-id="1292052">
-                                    <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg"
-                                         alt=${item.movieTitle}
-                                                 data-x="2000" data-y="2963">
-                                </div>
+            <div id="figureList" class="marginTop width85 suitMargin">
+                <c:forEach items="${searchResults}" var="item">
+                    <div class="figureItem">
+                        <a class="item " target="_blank" href=${item.url}>
+                            <div class="cover-wp" data-isnew="false" data-id="1292052">
+                                <img src=${item.imgUrl} height="80%" width="100%" alt=${item.movieTitle}>
                                 <p>
-                                        ${item.movieTitle}
-                                    <strong>item.rating</strong>
+                                    <span class="title">${item.movieTitle}</span>
+                                    <span class="year">${item.year}</span>
                                 </p>
+                            </div>
+                        </a>
+                    </div>
+                </c:forEach>
+
+            </div>
+        </div>
+    </div>
+    <%--推荐结果--%>
+    <div class="recommendation">
+        <div>
+            <div id="recommdationList" class="floatCSS">
+                <div>
+                    <h3>猜你喜欢</h3>
+                </div>
+                <c:forEach items="${recommendationResults}" var="item">
+                    <div class="recommendationFigureItem">
+                        <a class="item" target="_blank" href=${item.url}>
+                            <div class="cover-wp" data-isnew="false" data-id="1292052">
+                                <img src=${item.imgUrl} height="80%" width="100%" alt=${item.movieTitle}>
+                                <p>
+                                    <span class="title">${item.movieTitle}</span>
+                                    <span class="year">${item.year}</span>
+                                </p>
+                            </div>
+                        </a>
+
+
+                    </div>
+                </c:forEach>
+
+            </div>
+
+            <div id="preference" class="marginTop">
+                <div>
+                    <%--                    <div class="clear"></div>--%>
+                    <h3>观影记录</h3>
+                    <c:forEach items="${preferenceResults}" var="item">
+                        <div class="recommendationFigureItem">
+                            <a class="item" target="_blank" href=${item.url}>
+                                <div class="cover-wp" data-isnew="false" data-id="1292052">
+                                    <img src=${item.imgUrl} height="80%" width="100%" alt=${item.movieTitle}>
+                                    <p>
+                                        <span class="title">${item.movieTitle}</span>
+                                        <span class="year">${item.year}</span>
+                                    </p>
+                                </div>
                             </a>
                         </div>
                     </c:forEach>
                 </div>
-
-
-                <table class="table table-striped table-bordered" id="peopleLikeByLookCountTable">
-                    <tr>
-                        <td>title</td>
-                        <td>genres</td>
-                    </tr>
-                    <c:forEach items="${peopleLikeByLookCountResults}" var="item">
-                        <tr>
-                            <td>${item.movieTitle}</td>
-                            <td>${item.genres}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
-            </div>
-
-            <div style="width: 50%">
-                <h3>按评分排序</h3>
-                <table class="table table-striped table-bordered" id="peopleLikeByRatingTable">
-                    <tr>
-                        <td>title</td>
-                        <td>genres</td>
-                    </tr>
-                    <c:forEach items="${peopleLikeByRatingResults}" var="item">
-                        <tr>
-                            <td>${item.movieTitle}</td>
-                            <td>${item.genres}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
             </div>
         </div>
-        <div id="recommdation" style="float:right">
-            <h3>猜你喜欢</h3>
-            <table class="table table-striped table-bordered" id="recommdationTable">
-                <tr>
-                    <td>title</td>
-                    <td>genres</td>
-                </tr>
-                <c:forEach items="${preferenceResults}" var="item">
-                    <tr>
-                        <td>${item.movieTitle}</td>
-                        <td>${item.genres}</td>
-                    </tr>
-                </c:forEach>
-            </table>
-        </div>
     </div>
-
-    <div id="preference" style="float:left">
-        <h3>历史偏好电影</h3>
-        <table class="table table-striped table-bordered" id="prefenceTable">
-            <tr>
-                <td>title</td>
-                <td>genres</td>
-            </tr>
-            <c:forEach items="${recommendationResults}" var="item">
-                <tr>
-                    <td>${item.movieTitle}</td>
-                    <td>${item.genres}</td>
-                </tr>
-            </c:forEach>
-        </table>
-    </div>
-
-
+    <script type="text/javascript">
+        $("input[name='tag'][value='${tag}']").attr("checked", true);
+        $("input[name='type'][value='${type}']").attr("checked", true);
+    </script>
+    <!-- Scripts -->
+    <%--    <script src="assets/js/jquery.min.js"></script>--%>
+    <%--    <script src="assets/js/jquery.dropotron.min.js"></script>--%>
+    <%--    <script src="assets/js/browser.min.js"></script>--%>
+    <%--    <script src="assets/js/breakpoints.min.js"></script>--%>
+    <%--    <script src="assets/js/util.js"></script>--%>
+    <%--    <script src="assets/js/main.js"></script>--%>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
