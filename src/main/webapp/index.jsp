@@ -1,37 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>你的私人影院</title>
-    <!-- 包含头部信息用于适应不同设备 -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/movie.css"/>
 </head>
+<body class="backGround">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <body>
-<div class="header"
-     style="background-image: url(figure/head.jpg);height: 75px">
-    <div class="container">
-        <div style="height: 100px; color: cornsilk"><h1>电影推荐系统</h1></div>
-    </div>
-</div>
+<%--页面头部信息--%>
 
-<div class="floatCSS">
-    <div class="display searchCenter display">
-        <div class="width40">
-            <form id="init" action="/init" method="get">
-                <input type="submit" class="btn" value="初始化" size=100>
+<div class="indexMargin">
+    <center>
+        <div>
+            <form id="init" class="width200px backGround searchButton s_btn display" action="/init" method="get">
+                <input type="submit" class=" btnSize" value="初始化" size=100>
             </form>
         </div>
-        <div class="width40">
-            <form id="login" action="/login" method="get">
-                <input type="submit" class="btn" value="登陆" size=100>
+        <div>
+            <form id="register" class="width200px backGround searchButton s_btn display" action="/register.jsp"
+                  method="get">
+                <input type="submit" class=" btnSize" value="注 册" size=100>
             </form>
         </div>
-    </div>
+        <div>
+            <form id="login" class="width200px backGround searchButton s_btn display" action="/login.jsp" method="get">
+                <input type="submit" class=" btnSize" value="登 陆" size=100>
+            </form>
+        </div>
+    </center>
 </div>
 
+<%--<div class="header headerBackground">--%>
+<%--    <div class="floatCSS">--%>
+<%--        <div class=" indexMargin">--%>
+<%--            <div class="width100px floatLeft">--%>
+<%--                <form id="init" height="100px" width="200px" action="/init" method="get">--%>
+<%--                    <input type="submit" class=" btnSize" value="初始化" size=100>--%>
+<%--                </form>--%>
+<%--            </div>--%>
+<%--            <div class="width100px floatRight">--%>
+<%--                <form id="login" height="50px" width="100px" action="/login" method="get">--%>
+<%--                    <input type="submit" class=" btnSize" value="登陆" size=100>--%>
+<%--                </form>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
 <!-- 新 Bootstrap 核心 CSS 文件 -->
 <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">

@@ -2,11 +2,9 @@ package com.port.dao;
 
 import com.port.configuration.TableNameConfig;
 import com.port.constant.ColumnEnum;
-import com.port.domain.CompleteDO;
-import com.port.domain.MovieDO;
-import com.port.domain.RatingDO;
+import com.port.constant.State;
+import com.port.domain.*;
 import com.port.util.TransferUtil;
-import com.port.domain.TagDO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -25,6 +23,51 @@ public class MysqlDao {
     @Resource(name = "mysqlConnection")
     public Connection mysqlConnection;
 
+    /**
+     * 插入注册的用户信息到用户表中
+     * @param userDO
+     * @return
+     */
+    public State insertUser(UserDO userDO){
+        int i = 0;
+        String sql = "insert into " + TableNameConfig.userTableName + " (userId,nickName,password) values(?,?,?)";
+        PreparedStatement pstmt;
+        try {
+            pstmt = (PreparedStatement) mysqlConnection.prepareStatement(sql);
+            pstmt.setInt(1, userDO.getUserId());
+            pstmt.setString(2, userDO.getNickName());
+            pstmt.setString(3, userDO.getPasswoed());
+            i = pstmt.executeUpdate();
+            pstmt.close();
+            //mysqlConnection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if(1 == i){
+            return State.SUCCESS;
+        }else{
+            return State.FAIL;
+        }
+    }
+
+    public UserDO getUser(Integer userId, String password){
+        UserDO result = new UserDO();
+        String sql = "select * from " + TableNameConfig.userTableName + " where userId = ? and password = ? limit 1";
+        PreparedStatement pstmt;
+            try {
+                pstmt = mysqlConnection.prepareStatement(sql);
+                pstmt.setInt(1, userId);
+                pstmt.setString(2, password);
+                ResultSet rs = pstmt.executeQuery();
+                while (rs.next()) {
+                    result = TransferUtil.transfer2UserDO(rs.getInt(ColumnEnum.USERID.getName()), rs.getString(ColumnEnum.NICK_NAME.getName()),
+                            rs.getString(ColumnEnum.PASSWORD.getName()));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        return result;
+    }
     /**
      * 将movies.csv中的数据插入movies 表中
      *

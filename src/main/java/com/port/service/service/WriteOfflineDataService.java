@@ -18,12 +18,18 @@ public class WriteOfflineDataService {
     @Autowired
     MysqlDao mysqlDao;
 
+    public static String userTableName;
     public static String movieTableName;
     public static String preferenceTableName;
     public static String predictTableName;
     public static String tagTableName;
     public static String completePreferenceTableName;
     public static String completePredictTableName;
+
+    @Value("${user.tableName}")
+    public void setUserTableName(String userTableName){
+        WriteOfflineDataService.userTableName = userTableName;
+    }
 
     @Value("${movie.tableName}")
     public void setMovieTableName(String movieTableName) {
@@ -65,7 +71,8 @@ public class WriteOfflineDataService {
 
     public void doInit() {
         System.out.println("start to init ……");
-//        recreateMovieTable();
+        recreateUserTable();
+        recreateMovieTable();
 //        recreatePreferenceTable();
 //        recreatePredictTable();
 //        recreateTagTable();
@@ -73,9 +80,14 @@ public class WriteOfflineDataService {
 //        initPrefenceData();
 //        initPredictData();
 //        initTagData();
-        recreategCompletePredictTable();
-        recreategCompletePreferenceTable();
+//        recreategCompletePredictTable();
+//        recreategCompletePreferenceTable();
         System.out.println("init stop");
+    }
+    public void recreateUserTable() {
+        String createSql = "create table " + userTableName
+                + " (userId int(5), nickName varchar(250), password varchar(250))";
+        mysqlDao.recreateTable(userTableName, createSql);
     }
 
     public void recreateMovieTable() {

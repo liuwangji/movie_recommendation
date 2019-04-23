@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 .searchTextInput {
     height: 35px;
     width: 400px;
@@ -6,8 +10,52 @@
     margin-top: 5px;
     border: double;
 }
-.suitMargin{
+
+.movieTitle {
+    left: 20px;
+    position: relative;
+    height: 100px;
+    color: cornsilk;
+}
+
+.login {
+    position: absolute;
+    right: 40px;
+    top: 0;
+    z-index: 1;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+.loginBig {
+    position: absolute;
+    right: 40px;
+    top: 0;
+    z-index: 1;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.user {
+    position: absolute;
+    right: 40px;
+    top: 5px;
+    text-align: center;
+    line-height: 110px;
+    font-size: 20px;
+    color: cornsilk;
+}
+.indexMargin{
+    margin: 20% 25%;
+}
+.suitMargin {
     margin: 10px 50px 5px 50px;
+}
+.fontSize20px{
+    font-size: 20px
 }
 .searchButton {
     font-size: 15px;
@@ -16,19 +64,34 @@
     border-bottom: 1px solid #2d78f4;
     outline: medium;
 }
-.borderStyle{
-    border-style:solid;
+
+.borderStyle {
+    border-style: solid;
 }
+
+.headerBackground {
+    background-image: url(../../figure/head.jpg);
+    height: 75px;
+}
+
 .search {
     width: 68%;
     float: left;
 }
-.recommendation{
+
+.recommendation {
     width: 30%;
     float: left;
 }
-.height30{
+
+.height30 {
     height: 30px;
+}
+.floatLeft{
+    float: left;
+}
+.floatRight{
+    float: right;
 }
 .float50 {
     width: 50%;
@@ -59,55 +122,80 @@
     width: 100px;
     float: left;
 }
-.float80px{
+
+.float80px {
     width: 80px;
     float: left;
 }
-.width100px{
+
+.width100px {
     width: 100px;
 }
-.width400px{
+
+.width400px {
     width: 400px;
 }
-.width80{
+.width200px {
+    width: 200px;
+}
+.width80 {
     width: 80%;
 }
-.width90{
+
+.width90 {
     width: 90%;
 }
-.width85{
+
+.width85 {
     width: 85%;
 }
-.width40{
+
+.width40 {
     width: 40%;
 }
+
+.width90px {
+    width: 90px;
+}
+
 .backGround {
     background-image: url(../../figure/movie.jpeg);
+    /*background: #979797;*/
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 
 .searchCenter {
     margin-top: 50px;
     text-align: center;
 }
-.marginTop{
-     margin-top: 50px;
- }
-.marginTop20P{
+
+.marginTop {
+    margin-top: 50px;
+}
+
+.marginTop20P {
     margin-top: 20%;
 }
-.marginTop20{
+
+.marginTop20 {
     margin-top: 20px;
 }
-.marginTop100{
+
+.marginTop100 {
     margin-top: 100px;
 }
-.marginRight20{
+
+.marginRight20 {
     margin-right: 20px;
 }
-.inLine{
+
+.inLine {
     width: 100%;
     margin: 50px auto 0;
 }
+
 .searchItemCenter {
     text-align: center;
 }
@@ -122,18 +210,18 @@
     text-align: left;
     padding: 5px;
 }
+
 .cover-wp {
     background-size: 100%;
     height: 100%;
     overflow: hidden;
     position: relative;
 }
-.title{
-    margin-right: 5px;
-}
+
 .year {
     color: #ffac2d;
 }
+
 .nav-search .inp {
     float: left;
     width: 470px;
@@ -188,6 +276,7 @@
     line-height: 20px;
     border-radius: 2px;
 }
+
 .tag-checked {
     opacity: .8;
     background: #258dcd;
@@ -205,12 +294,14 @@
     border-top: 1px solid #dfdfdf;
     border-bottom: 1px solid #dfdfdf;
 }
+
 .tab-checked {
-    border-left: 1px solid #258dcd!important;
-    border-top: 1px solid #258dcd!important;
-    border-bottom: 1px solid #258dcd!important;
+    border-left: 1px solid #258dcd !important;
+    border-top: 1px solid #258dcd !important;
+    border-bottom: 1px solid #258dcd !important;
     position: relative;
 }
+
 .floatCSS {
     width: 100%;
     margin-top: 20px;
@@ -221,11 +312,13 @@
     height: 240px;
     float: left;
 }
-.recommendationFigureItem{
+
+.recommendationFigureItem {
     width: 25%;
     height: 200px;
     float: left;
 }
+
 .searchContainer {
     width: 90%;
     padding-right: 15px;
@@ -233,13 +326,26 @@
     margin-right: auto;
     margin-left: auto;
 }
-.clearFloat{
+
+.clearFloat {
     clear: both;
 }
-.display{
+
+.display {
     display: inline;
 }
-.imgSize{
+
+.imgSize {
     width: 100%;
     height: 100%;
+}
+.btnSize{
+    height: 50px;
+    width: 100px;
+    background: darkgrey;
+    font-size: 22px;
+}
+.lableColor{
+    color: palegoldenrod;
+    display: inline;
 }

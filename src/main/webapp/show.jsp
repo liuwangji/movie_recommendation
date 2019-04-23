@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<%--<link rel="stylesheet" href="assets/css/main.css"/>--%>
 <link rel="stylesheet" href="assets/css/movie.css"/>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,30 +14,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%--页面头部信息--%>
-<div class="header"
-     style="background-image: url(figure/head.jpg);height: 75px">
-    <div class="container">
-        <div style="height: 100px; color: cornsilk"><h1>电影推荐系统</h1></div>
+<div class="header headerBackground">
+    <div class="movieTitle width40 floatLeft">
+        <h1>电影推荐系统</h1>
+    </div>
+    <%--登陆信息--%>
+    <div class="width90px floatRight">
+        <%--    <div style="clear: both;"></div>--%>
+        <img src="figure/user.jpg" class="img-circle pull-right login">
+        <p class="user">
+            ${nickName}
+        </p>
+        <div class="clearFloat"></div>
     </div>
 </div>
-<%--登陆信息--%>
-<div>
-    <div style="clear: both;"></div>
-    <img src="figure/user.jpg" style="position: absolute;right: 10px;
-    top: 0;
-    z-index: 1;
-    height: 50px;
-    width: 50px;
-    text-align: center;
-    line-height: 50px;" class="img-circle pull-right">
-    <p style="position: absolute;right: 10px;
-    top: 5px;
-    text-align: center;
-    line-height: 110px;font-size: 20px;color: cornsilk">
-        ${nickName}
-    </p>
-    <div class="clearFloat"></div>
-</div>
+
 
 <div class="floatCSS">
     <%--搜索栏--%>
@@ -144,10 +134,6 @@
                     <input type="submit" class="backGround searchButton s_btn display" value="搜索">
                 </div>
             </div>
-            <script type="text/javascript">
-                $("input[name='tag'][value='${tag}']").attr("checked", true);
-                $("input[name='type'][value='${type}']").attr("checked", true);
-            </script>
         </form>
         <div class="clear"></div>
         <%--电影展示--%>
@@ -216,10 +202,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $("input[name='tag'][value='${tag}']").attr("checked", true);
-        $("input[name='type'][value='${type}']").attr("checked", true);
-    </script>
     <!-- Scripts -->
     <%--    <script src="assets/js/jquery.min.js"></script>--%>
     <%--    <script src="assets/js/jquery.dropotron.min.js"></script>--%>
@@ -235,5 +217,9 @@
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $("input[name='tag'][value='${tag}']").prop("checked", true);
+        $("input[name='type'][value='${type}']").prop("checked", true);
+    </script>
 </body>
 </html>

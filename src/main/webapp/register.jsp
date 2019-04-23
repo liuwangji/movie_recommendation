@@ -10,21 +10,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--页面头部信息--%>
-    <div class="indexMargin">
-        <center>
-            <form id="form" action="/login" method='get'>
-                <p>
-                <input class="fontSize20px width200px " type="text" name="userId" placeholder=" 用 户 名">
-                </p>
-                <p>
+
+<div class="indexMargin">
+    <center>
+        <form id="form" action="/register" method='get'>
+            <p>
+                <input class="fontSize20px width200px " type="text" name="userId" placeholder=" 用 户 Id">
+            </p>
+            <p>
+                <input class="fontSize20px width200px " type="text" name="nickName" placeholder=" 昵 称 ">
+            </p>
+            <p>
                 <input class="fontSize20px width200px" type="text" name="password" placeholder=" 密 码">
-                </p>
-                <input type="submit" class="width200px backGround searchButton s_btn display" value="登 录">
-                <div></div>
-            </form>
-        </center>
-    </div>
+            </p>
+            <input type="submit" class="width200px backGround searchButton s_btn display" value=" 注  册 ">
+            <div></div>
+        </form>
+    </center>
+</div>
 
 <%--</center>--%>
 <!-- 新 Bootstrap 核心 CSS 文件 -->

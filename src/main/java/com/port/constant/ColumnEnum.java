@@ -1,6 +1,10 @@
 package com.port.constant;
 
 public enum ColumnEnum {
+    NICK_NAME("nickName"),
+
+    PASSWORD("password"),
+
     MOVIEID("movieId"),
 
     USERID("userId"),

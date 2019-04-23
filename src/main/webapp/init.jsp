@@ -10,23 +10,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<body>
 <%--页面头部信息--%>
-    <div class="indexMargin">
-        <center>
-            <form id="form" action="/login" method='get'>
-                <p>
-                <input class="fontSize20px width200px " type="text" name="userId" placeholder=" 用 户 名">
-                </p>
-                <p>
-                <input class="fontSize20px width200px" type="text" name="password" placeholder=" 密 码">
-                </p>
-                <input type="submit" class="width200px backGround searchButton s_btn display" value="登 录">
-                <div></div>
-            </form>
-        </center>
-    </div>
+<div class="header headerBackground">
 
-<%--</center>--%>
+</div>
+<div class="floatCSS">
+    <div class=" indexMargin">
+        <div class="width100px floatLeft">
+            <form id="init" height="100px" width="200px" action="/init" method="get">
+                <input type="submit" class=" btnSize" value="初始化" size=100>
+            </form>
+        </div>
+        <div class="width100px floatLeft">
+            <form id="register" height="100px" width="200px" action="/register" method="get">
+                <input type="submit" class=" btnSize" value="注册" size=100>
+            </form>
+        </div>
+        <div class="width100px floatRight">
+            <form id="login" height="50px" width="100px" action="/login" method="get">
+                <input type="submit" class=" btnSize" value="登陆" size=100>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- 新 Bootstrap 核心 CSS 文件 -->
 <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
@@ -35,5 +43,6 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </body>
 </html>
