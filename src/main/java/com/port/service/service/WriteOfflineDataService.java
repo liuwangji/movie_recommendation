@@ -73,15 +73,15 @@ public class WriteOfflineDataService {
         System.out.println("start to init ……");
         recreateUserTable();
         recreateMovieTable();
-//        recreatePreferenceTable();
-//        recreatePredictTable();
-//        recreateTagTable();
-//        initMovieData();
-//        initPrefenceData();
-//        initPredictData();
-//        initTagData();
-//        recreategCompletePredictTable();
-//        recreategCompletePreferenceTable();
+        recreatePreferenceTable();
+        recreatePredictTable();
+        recreateTagTable();
+        initMovieData();
+        initPrefenceData();
+        initPredictData();
+        initTagData();
+        recreategCompletePredictTable();
+        recreategCompletePreferenceTable();
         System.out.println("init stop");
     }
     public void recreateUserTable() {
